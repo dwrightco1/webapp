@@ -69,10 +69,10 @@ http.createServer(function(request, response) {
 	if (typeof rows !== "undefined" && rows !== null) {
             console.log('Data received from Db:');
             console.log(rows);
-            db_return_data = `V1.0.1: Successfully connected to database: ${database_user}@${database_ip}:${database_name}`
+            db_return_data = `v1.0.2: Successfully connected to database: ${database_user}@${database_ip}:${database_name}`
 	}
 	else {
-            db_return_data = `V1.0.1: Received empty response from database: ${database_user}@${database_ip}:${database_name}`
+            db_return_data = `v1.0.2: Received empty response from database: ${database_user}@${database_ip}:${database_name}`
         }
     });
 
