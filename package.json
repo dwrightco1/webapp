@@ -1,0 +1,19 @@
+{
+  "name": "webapp",
+  "version": "0.0.1",
+  "description": "A simple webserver in node.js",
+  "main": "server.js",
+  "scripts": {
+    "start": "node webapp.js"
+  },
+  "dependencies": {
+    "mysql": "~2.3.2"
+  },
+  "engines": {
+    "node": "10.x"
+  },
+  "license": "MIT",
+  "devDependencies": {
+    "ws": "3.3.2"
+  }
+}
