@@ -7,10 +7,7 @@ services:
       - ./mysql-data:/var/lib/mysql
       - ./mysql-init-files:/docker-entrypoint-initdb.d
     restart: always
-    environment:
-      MYSQL_DATABASE: nodeapp
-      MYSQL_USER: root
-      MYSQL_ROOT_PASSWORD: webapppw
+    env_file: variables-mysql-service.env
     ports:
       - "3600:3306"
     healthcheck:
@@ -20,7 +17,7 @@ services:
 
   # web application (front-end)
   webapp:
-    env_file: variables.env
+    env_file: variables-webapp.env
     build: .
     ports:
       - "3000:80"
