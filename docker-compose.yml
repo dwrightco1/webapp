@@ -1,18 +1,29 @@
-version: "0.1"
-mysqldb:
+---
+services:
+  # database (back-end)
+  mysql-service:
     image: mysql:5.7
-    #volumes:
-    #  - ./mysql-data:/var/lib/mysql
-    #  - ./mysql-init-files:/docker-entrypoint-initdb.d
+    volumes:
+      - ./mysql-data:/var/lib/mysql
+      - ./mysql-init-files:/docker-entrypoint-initdb.d
     restart: always
     environment:
-      MYSQL_DATABASE: webapp
+      MYSQL_DATABASE: nodeapp
       MYSQL_USER: root
-      MYSQL_PASSWORD: wepapppw
       MYSQL_ROOT_PASSWORD: webapppw
     ports:
       - "3600:3306"
-    #healthcheck:
-    #  test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
-    #  timeout: 20s
-    #  retries: 10
+    healthcheck:
+      test: ["CMD", "mysqladmin" ,"ping", "-h", "localhost"]
+      timeout: 20s
+      retries: 10
+
+  # web application (front-end)
+  webapp:
+    env_file: variables.env
+    build: .
+    ports:
+      - "3000:80"
+    depends_on:
+      mysql-service:
+        condition: service_healthy
