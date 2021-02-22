@@ -4,7 +4,7 @@ services:
   mysql-service:
     image: mysql:5.7
     volumes:
-      - ./mysql-data:/var/lib/mysql
+      - ~/mysql-data:/var/lib/mysql
       - ./mysql-init-files:/docker-entrypoint-initdb.d
     restart: always
     env_file: variables-mysql-service.env
@@ -17,6 +17,7 @@ services:
 
   # web application (front-end)
   webapp:
+    image: dyvantage01/test:latest
     env_file: variables-webapp.env
     build: .
     ports:
