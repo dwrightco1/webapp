@@ -5,3 +5,8 @@ Nodeapp is a simple application used for testing
 ```
 docker build -t webapp .
 ```
+
+## To Run
+```
+docker-compose up [-d]
+```
