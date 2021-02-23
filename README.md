@@ -14,5 +14,5 @@ docker-compose up [-d]
 ## To Run on Kubernetes
 ```
 kubectl apply -f https://raw.githubusercontent.com/dwrightco1/webapp/master/kubernetes/webapp-backend.yaml
-
+kubectl apply -f https://raw.githubusercontent.com/dwrightco1/webapp/master/kubernetes/webapp-frontent.yaml
 ```
