@@ -1,0 +1,63 @@
+# configmaps
+---
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: webapp-configmap
+data:
+  WEBAPP_WEB_PORT: "8080"
+  WEBAPP_DB_USER: "root"
+  WEBAPP_DB_NAME: "webapp"
+
+# service
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: webapp-service
+spec:
+  selector:
+    app: webapp
+  ports:
+    - protocol: TCP
+      port: 3000
+      targetPort: 8080
+  type: NodePort
+
+# deployment
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  creationTimestamp: null
+  labels:
+    app: webapp
+  name: webapp
+  annotations:
+    fluxcd.io/automated: "true"
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: webapp
+  strategy: {}
+  template:
+    metadata:
+      creationTimestamp: null
+      labels:
+        app: webapp
+    spec:
+      containers:
+      - image: dyvantage01/webapp:version-1.0.8
+        name: webapp
+        env:
+          - name: WEBAPP_DB_PASSWORD
+            valueFrom:
+              secretKeyRef:
+                name: webapp-secrets
+                key: WEBAPP_DB_PASSWORD
+        ports:
+        - containerPort: 8080
+        envFrom:
+        - configMapRef:
+            name: webapp-configmap
