@@ -16,3 +16,8 @@ docker-compose up [-d]
 kubectl apply -f https://raw.githubusercontent.com/dwrightco1/webapp/master/kubernetes/webapp-backend.yaml
 kubectl apply -f https://raw.githubusercontent.com/dwrightco1/webapp/master/kubernetes/webapp-frontend.yaml
 ```
+
+> NOTE: TO access externally, add a route:
+> ```
+> oc expose service/webapp-service
+> ```
