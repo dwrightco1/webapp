@@ -6,7 +6,13 @@ Nodeapp is a simple application used for testing
 docker build -t webapp .
 ```
 
-## To Run
+## To Run on Docker
 ```
 docker-compose up [-d]
+```
+
+## To Run on Kubernetes
+```
+kubectl apply -f https://raw.githubusercontent.com/dwrightco1/webapp/master/kubernetes/webapp-backend.yaml
+
 ```
