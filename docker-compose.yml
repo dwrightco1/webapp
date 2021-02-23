@@ -17,7 +17,7 @@ services:
 
   # web application (front-end)
   webapp:
-    image: dyvantage01/test:latest
+    image: dyvantage01/webapp:latest
     env_file: variables-webapp.env
     build: .
     ports:
