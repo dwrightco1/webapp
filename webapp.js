@@ -12,8 +12,8 @@ const dns = require('dns')
 
 // lookup ip for database
 var database_ip = "unresolved-ip"
-dns.lookup('mysql-service', function(err, result) {
-  console.log("dns.lookup(mysql-service) = " + result)
+dns.lookup('webapp-backend-service', function(err, result) {
+  console.log("dns.lookup(webapp-backend-service) = " + result)
   database_ip = result
   console.log("database_ip = " + database_ip)
 })
