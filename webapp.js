@@ -55,6 +55,7 @@ http.createServer(function(request, response) {
           db_return_data = `Failed to connect to database: ${database_user}@${database_ip}:${database_name}`
           return;
         }
+        console.log('Wepapp Version-1.0.13');
         console.log('Connection established');
 	db_return_data = `Established connection to database: ${database_user}@${database_ip}:${database_name}`
     });
